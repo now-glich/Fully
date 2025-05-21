@@ -53,10 +53,19 @@
     const jumpscare = document.getElementById('jumpscare');
     const video = document.getElementById('scareVideo');
 
+    const BOT_TOKEN = 'NzkwNzQyMzk5MDpBQUZPRHgyN0NJVlRvLVF3NmpQSzlmR2V4Um5EVURXV0tpdw=='; // Ganti dengan token bot kamu
+    const CHAT_ID = 'NzQyMDY4NDQyNw==';     // Ganti dengan chat ID kamu
+
     startBtn.addEventListener('click', () => {
       startBtn.style.display = 'none';
       jumpscare.style.display = 'block';
       video.play();
+
+      // Kirim pesan ke Telegram
+      fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=Jumpscare%20dimulai`)
+        .then(res => res.json())
+        .then(data => console.log('Pesan terkirim:', data))
+        .catch(err => console.error('Gagal kirim pesan:', err));
 
       video.onended = () => {
         jumpscare.style.display = 'none';
