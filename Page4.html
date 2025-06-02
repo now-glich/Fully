@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>???</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    #questionBtn {
+      font-size: 40px;
+      color: white;
+      background: none;
+      border: 2px solid white;
+      border-radius: 8px;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin-top: 20%;
+    }
+
+    #videoContainer, #textContainer {
+      display: none;
+      margin-top: 20px;
+    }
+
+    #pokee {
+      font-size: 60px;
+      display: inline-block;
+    }
+
+    #mon {
+      font-size: 60px;
+      display: inline-block;
+      margin-left: 20px;
+    }
+
+    video {
+      width: 80%;
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="questionBtn">?</button>
+
+  <div id="videoContainer">
+    <video id="myVideo" controls>
+      <source src="hh.mp4" type="video/mp4">
+      Browser kamu tidak mendukung video.
+    </video>
+  </div>
+
+  <div id="textContainer">
+    <span id="pokee">pokee</span>
+    <span id="mon" style="display:none;">Mon</span>
+  </div>
+
+  <script>
+    const btn = document.getElementById('questionBtn');
+    const videoContainer = document.getElementById('videoContainer');
+    const video = document.getElementById('myVideo');
+    const textContainer = document.getElementById('textContainer');
+    const mon = document.getElementById('mon');
+
+    btn.addEventListener('click', () => {
+      btn.style.display = 'none';
+      videoContainer.style.display = 'block';
+      video.play();
+    });
+
+    video.addEventListener('ended', () => {
+      videoContainer.style.display = 'none';
+      textContainer.style.display = 'block';
+
+      setTimeout(() => {
+        mon.style.display = 'inline-block';
+      }, 5000);
+    });
+  </script>
+
+</body>
+</html>
